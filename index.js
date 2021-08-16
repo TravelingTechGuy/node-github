@@ -638,8 +638,9 @@ var Client = module.exports = function(config) {
             var basic;
             switch (this.auth.type) {
                 case "oauth":
-                    path += (path.indexOf("?") === -1 ? "?" : "&") +
-                        "access_token=" + encodeURIComponent(this.auth.token);
+                    headers.authorization = " token " + this.auth.token;
+                    //path += (path.indexOf("?") === -1 ? "?" : "&") +
+                    //    "access_token=" + encodeURIComponent(this.auth.token);
                     break;
                 case "token":
                     basic = new Buffer(this.auth.username + "/token:" + this.auth.token, "ascii").toString("base64");
